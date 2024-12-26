@@ -35,3 +35,25 @@ button {
   border-radius: 5px;
   padding: 5px;
 }
+
+.book-details {
+  position: absolute;
+  height: 25vh;
+  width: 40vw;
+  background-color: rgb(12, 186, 239);
+  border-radius: 10px;
+  opacity: 0;
+  transition: opacity 0.8s ease-out;
+}
+
+.close-modal {
+  position: absolute;
+  right: 0;
+  top: 0;
+  cursor: pointer;
+}
+
+img {
+  width: 30%;
+  height: 30%;
+}

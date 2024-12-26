@@ -10,6 +10,11 @@
   <body onload="onInit()">
     <h1>Book Shop</h1>
     <button class="add-book" onclick="onAddBook()">Add Book</button>
+    <section class="book-details">
+      Book Details
+      <article class="close-modal" onclick="onCloseTheModal()">x</article>
+      <p></p>
+    </section>
     <table class="book-shop">
       <thead>
         <tr>
@@ -21,8 +26,7 @@
       <tbody class="book-list"></tbody>
     </table>
 
-    <script src="js/main.js"></script>
-    <script src="js/book.controller.js"></script>
     <script src="js/book.service.js"></script>
+    <script src="js/book.controller.js"></script>
   </body>
 </html>
