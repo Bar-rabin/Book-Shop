@@ -1,15 +1,25 @@
 'use strict'
 
-var gBooks = _createooks()
+const STORAGE_KEY = 'bookDB'
+var gBooks = _createBooks()
 var gIsModalShown = false
 
-function _createooks() {
-  var books = [
-    _createBook('The adventures of Lori Ipsi', 120, 'lori-ipsi.jpg'),
-    _createBook('World Atlas', 300, 'world-atlas.jpg'),
-    _createBook('Zorba The Greek', 87, 'zorba-the-greek.jpg'),
-  ]
+function _createBooks() {
+  var books = loadFromStorage(STORAGE_KEY)
+
+  if (!books || !books.length) {
+    books = [
+      _createBook('The adventures of Lori Ipsi', 120, 'lori-ipsi.jpg'),
+      _createBook('World Atlas', 300, 'world-atlas.jpg'),
+      _createBook('Zorba The Greek', 87, 'zorba-the-greek.jpg'),
+    ]
+    _saveBooksToStorage(STORAGE_KEY, books)
+  }
   return books
+}
+
+function _saveBooksToStorage() {
+  saveToStorage(STORAGE_KEY, gBooks)
 }
 
 // function getBooks() {
@@ -38,11 +48,14 @@ function _createooks() {
 function removeBook(bookId) {
   const bookIdx = gBooks.findIndex((book) => book.id === bookId)
   gBooks.splice(bookIdx, 1)
+
+  _saveBooksToStorage()
 }
 
 function updatePrice(bookId, newPrice) {
   const book = getBookById(bookId)
   book.price = newPrice
+  _saveBooksToStorage()
 }
 
 function _createBook(title, price, imgUrl) {
@@ -58,6 +71,8 @@ function _createBook(title, price, imgUrl) {
 function addBook(title, price) {
   const book = _createBook(title, price)
   gBooks.push(book)
+
+  _saveBooksToStorage()
 }
 
 function getBookById(bookId) {
@@ -75,7 +90,6 @@ function isShowDetails(book) {
     gIsModalShown = false
     book.isShowDetails = false
   }
-  console.log(book)
 }
 
 // function isModalShown() {
