@@ -12,11 +12,16 @@ function renderBooks() {
         <td>${book.title}</td>
         <td>${book.price}</td>
         <td>
-          <button class="read">Read</button>
-          <button class="update">Update</button>
-          <button class="delete">Delete</button>
+          <button class="read" onclick="onRemoveBook(event,'${book.id}')">Read</button>
+          <button class="update" onclick="onRemoveBook(event,'${book.id}')">Update</button>
+          <button class="delete" onclick="onRemoveBook(event,'${book.id}')">Delete</button>
         </td>
       </tr>`
   )
   document.querySelector('.book-list').innerHTML = strHTMLs.join('')
+}
+
+function onRemoveBook(ev, bookId) {
+  removeBook(bookId)
+  renderBooks()
 }

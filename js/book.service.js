@@ -5,22 +5,27 @@ var gBooks = getBooks()
 function getBooks() {
   return [
     {
-      id: 'bg4J78',
+      id: 't' + parseInt(Math.random() * 1000),
       title: 'The adventures of Lori Ipsi',
       price: 120,
       imgUrl: 'lori-ipsi.jpg',
     },
     {
-      id: 'bg5J78',
+      id: 't' + parseInt(Math.random() * 1000),
       title: 'World Atlas',
       price: 300,
       imgUrl: 'world-atlas.jpg',
     },
     {
-      id: 'bg6J78',
+      id: 't' + parseInt(Math.random() * 1000),
       title: 'Zorba The Greek',
       price: 87,
       imgUrl: 'zorba-the-greek.jpg',
     },
   ]
+}
+
+function removeBook(bookId) {
+  const bookIdx = gBooks.findIndex((book) => book.id === bookId)
+  gBooks.splice(bookIdx, 1)
 }
