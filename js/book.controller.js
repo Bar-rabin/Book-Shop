@@ -31,3 +31,11 @@ function onUpdateBook(bookId) {
   updatePrice(bookId, newPrice)
   renderBooks()
 }
+
+function onAddBook() {
+  var title = prompt('Enter book name')
+  var price = +prompt('Enter book price')
+
+  addBook(title, price)
+  renderBooks()
+}
